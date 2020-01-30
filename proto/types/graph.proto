@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package net.types.graph;
+
+message Graph {
+    repeated Node nodes = 1;
+    repeated Edge edges = 2;
+}
+
+message AddNode {
+    string label = 2;
+}
+
+message Node {
+    int32 id = 1;
+    string label = 2;
+}
+
+message AddEdge {
+    int32 source = 2;
+    int32 target = 3;
+}
+
+message Edge {
+    int32 id = 1;
+    int32 source = 2;
+    int32 target = 3;
+}

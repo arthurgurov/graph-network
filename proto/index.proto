@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+import "types/common.proto";
+import "types/graph.proto";
+
+package net;
+
+service GraphService {
+    rpc GetGraph(net.types.common.Empty) returns (net.types.graph.Graph) { };
+    rpc GetGraphStream(stream net.types.common.Empty) returns (stream GraphEvent) { };
+
+    rpc AddNode(net.types.graph.Node) returns (net.types.common.Id) { };
+    rpc DeleteNode(net.types.common.Id) returns (net.types.common.Empty) { };
+
+    rpc AddEdge(net.types.graph.Edge) returns (net.types.common.Id) { };
+    rpc DeleteEdge(net.types.common.Id) returns (net.types.common.Empty) { };
+
+    message GraphEvent {
+        // One of "Snapshot", "NodeAdded", "NodeDeleted", "EdgeAdded", "EdgeDeleted"
+        string name = 1;
+
+        oneof entity {
+            // For "Snapshot"
+            Graph graph = 2;
+            // For "NodeAdded", "NodeDeleted"
+            Node node = 3;
+            // For "EdgeAdded", "EdgeDeleted"
+            Edge edge = 4;
+        }
+    }
+}
+
+service TestService {
+    rpc PopulateTestData(net.types.common.Empty) returns (net.types.common.Empty) { };
+}

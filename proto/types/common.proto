@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package net.types.common;
+
+message Empty { }
+
+message Id {
+  int32 id = 1;
+}

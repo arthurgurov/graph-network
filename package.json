@@ -1,0 +1,19 @@
+{
+  "name": "network-graph-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "network",
+    "graph",
+    "grpc",
+    "js",
+    "ts",
+    "nestjs"
+  ],
+  "author": "Arthur Gurov",
+  "license": "ISC"
+}
